@@ -266,8 +266,8 @@ export default function TextToJSONApp() {
       - 末尾に「|」で配列区切り
     </div>
 
-    {/* 公式解説ページへのリンクボタン */}
-    <a 
+{/* 公式解説ページへのリンクボタン（はみ出し防止修正版） */}
+<a 
       href="https://cratier-gd.blogspot.com/p/gdob-converter.html" 
       target="_blank" 
       rel="noopener noreferrer" 
@@ -276,7 +276,8 @@ export default function TextToJSONApp() {
         alignItems: 'center', 
         justifyContent: 'center', 
         gap: '8px', 
-        width: '100%', 
+        width: '100%',             // 横幅を親いっぱいに
+        boxSizing: 'border-box',   // 枠線と余白を幅に含める（はみ出し防止）
         padding: '12px', 
         borderRadius: '12px', 
         background: isDark ? '#334155' : '#f1f5f9', 
@@ -290,8 +291,7 @@ export default function TextToJSONApp() {
       }}
     >
       <ExternalLink size={14} /> 技術仕様・運用マニュアル
-    </a>
-    
+    </a>   
     <button onClick={() => setShowHelp(false)} style={{ width: '100%', padding: '12px', borderRadius: '12px', border: 'none', background: '#6366f1', color: 'white', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px' }}>Close</button>
   </div>
 )}
